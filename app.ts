@@ -3,7 +3,7 @@ import cors from "cors";
 import cookieParser from "cookie-parser";
 require("dotenv").config();
 import { ErrorMiddleware } from "./middleware/error";
-import UserRouter from "./routes/userroute";
+import UserRouter from "./routes/user.route";
 
 export const app = express();
 // body-parser: Parse incoming request bodies in a middleware before your handlers, available under the req.body property.
@@ -18,7 +18,6 @@ app.use(cookieParser());
 app.use(cors({ origin: process.env.ORIGIN }));
 
 // routes
-
 app.use("/api/v1", UserRouter);
 
 // testing api
