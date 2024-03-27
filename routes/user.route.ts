@@ -19,7 +19,7 @@ UserRouter.post("/activate-user", activateUser);
 
 UserRouter.post("/login", LoginUser);
 
-UserRouter.post("/logout", isAuthenticated, AuthorizeRole("admin"), LogOutUser);
+UserRouter.post("/logout", isAuthenticated, LogOutUser);
 
 UserRouter.post("/refreshtoken", updateAccessToken);
 
@@ -27,6 +27,6 @@ UserRouter.post("/me", isAuthenticated, getUserInfo);
 
 UserRouter.post("/social-auth", socialAuth);
 
-UserRouter.post("/update-user-info", updateUserInfo);
+UserRouter.put("/update-user-info", isAuthenticated, updateUserInfo);
 
 export default UserRouter;

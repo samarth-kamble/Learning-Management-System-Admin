@@ -290,9 +290,7 @@ export const updateUserInfo = CatchAsyncError(
   async (req: Request, res: Response, next: NextFunction) => {
     try {
       const { name, email } = req.body as IUpdateUSerInfo;
-
       const userId = req.user?._id;
-
       const user = await userModel.findById(userId);
 
       if (email && user) {
@@ -308,9 +306,10 @@ export const updateUserInfo = CatchAsyncError(
       }
 
       await user?.save();
+
       await redis.set(userId, JSON.stringify(user));
 
-      res.status(201).json({
+      res.status(200).json({
         success: true,
         user,
       });
