@@ -2,7 +2,6 @@ require("dotenv").config();
 import nodemailer, { Transporter } from "nodemailer";
 import ejs from "ejs";
 import path from "path";
-import { dot } from "node:test/reporters";
 
 interface EmailOptions {
   email: string;

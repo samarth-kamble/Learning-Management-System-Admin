@@ -7,8 +7,11 @@ import {
   registrationUser,
   socialAuth,
   updateAccessToken,
+  updateAvatar,
+  updatePassword,
   updateUserInfo,
 } from "../controllers/user.controller";
+
 import { AuthorizeRole, isAuthenticated } from "../middleware/auth";
 
 const UserRouter = express.Router();
@@ -28,5 +31,9 @@ UserRouter.post("/me", isAuthenticated, getUserInfo);
 UserRouter.post("/social-auth", socialAuth);
 
 UserRouter.put("/update-user-info", isAuthenticated, updateUserInfo);
+
+UserRouter.put("/update-user-password", isAuthenticated, updatePassword);
+
+UserRouter.put("/update-user-avatar", isAuthenticated, updateAvatar);
 
 export default UserRouter;
